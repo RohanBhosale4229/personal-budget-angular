@@ -4,14 +4,16 @@ const port = 3000;
 
 app.use('/',express.static('public'));
 
-<script type="text/javascript" src="budget.json"></script>
+const fs= require('fs');
+let a=fs.readFileSync('budget.json');
+let b = JSON.parse(a);
 
 app.get('/hello', (req, res) => {
     res.send('Hello World')
 });
 
 app.get('/budget', (req, res) => {
-    res.json(budget); 
+    res.json(b); 
 });
 
 app.listen(port, () => {
