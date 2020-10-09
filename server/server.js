@@ -5,26 +5,12 @@ const port = 3000;
 
 app.use(cors());
 
-const budget={
-    "myBudget":[
-
-        {
-            "title": "Eat Out",
-            "budget": 25
-        },
-        {
-            "title": "Rent",
-            "budget": 375
-        },
-        {
-            "title": "Grocery",
-            "budget": 110
-        },
-    ]
-};
+const fs= require('fs');
+let a=fs.readFileSync('./budget.json');
+let b = JSON.parse(a);
 
 app.get('/budget', (req, res) => {
-    res.json(budget); 
+    res.json(b); 
 });
 
 app.listen(port, () => {
