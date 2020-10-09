@@ -24,8 +24,10 @@ constructor(
    }
 
   ngAfterViewInit(): void {
+    if (this.service.dataSource.datasets[0].data.length === 0){
 
     this.service.getData();
+    }
     setTimeout(() => {
       this.createChart();
 
